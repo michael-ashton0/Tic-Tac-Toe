@@ -1,6 +1,6 @@
-let boxes = [...document.querySelectorAll('.box')];
+let boxes       = [...document.querySelectorAll('.box')];
 let resetButton = document.querySelector('.reset');
-let turnO = true;
+let turnO       = true;
 let infoDisplay = document.querySelector('.info');
 
 // straight from geeksforgeeks
@@ -18,18 +18,21 @@ const possibleWins = [
 boxes.forEach((box) => {
     box.addEventListener('click', function () {
         if (turnO) {
-            infoDisplay.innerText = "X's turn!"
-            box.style.color = 'white';
-            box.innerText = 'O';
-            turnO = false;
-            box.disabled = true;
+            infoDisplay.innerText   = "X's turn!"
+            box.style.color         = 'white';
+            box.innerText           = 'O';
+
+            turnO           = false;
+            box.disabled    = true;
             checkWinner();
         } else {
-            infoDisplay.innerText = "O's turn!"
-            box.style.color = 'aqua';
-            box.innerText = 'X';
-            turnO = true;
-            box.disabled = true;
+            infoDisplay.innerText   = "O's turn!"
+            box.style.color         = 'aqua';
+            box.innerText           = 'X';
+            
+            turnO           = true;
+            box.disabled    = true;
+            
             checkWinner();
         }
     });
@@ -57,9 +60,9 @@ const checkWinner = () => {
     let winOnBoard = false;
 
     for (let pattern of possibleWins) {
-        let boxOne = boxes[pattern[0]].innerText;
-        let boxTwo = boxes[pattern[1]].innerText;
-        let boxThree = boxes[pattern[2]].innerText;
+        let boxOne      = boxes[pattern[0]].innerText;
+        let boxTwo      = boxes[pattern[1]].innerText;
+        let boxThree    = boxes[pattern[2]].innerText;
 
         if (boxOne != "" && boxTwo != "" && boxThree != "" &&
             boxOne == boxTwo && boxTwo == boxThree) {
