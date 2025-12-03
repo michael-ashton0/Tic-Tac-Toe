@@ -18,6 +18,7 @@ const possibleWins = [
 boxes.forEach((box) => {
     box.addEventListener('click', function () {
         if (turnO) {
+            
             infoDisplay.innerText   = "X's turn!"
             box.style.color         = 'white';
             box.innerText           = 'O';
@@ -26,6 +27,7 @@ boxes.forEach((box) => {
             box.disabled    = true;
             checkWinner();
         } else {
+
             infoDisplay.innerText   = "O's turn!"
             box.style.color         = 'aqua';
             box.innerText           = 'X';
@@ -68,6 +70,9 @@ const checkWinner = () => {
             boxOne == boxTwo && boxTwo == boxThree) {
             showWinner(boxOne);
             winOnBoard = true;
+            pattern.forEach(i => {
+                boxes[i].classList.add('win');
+            });
             resetButton.innerText = 'New Game'
             disableBoxes();
             return;
@@ -91,6 +96,7 @@ const checkWinner = () => {
 
 const resetGame = () => {
     turnO = true;
+    boxes.forEach(box => box.classList.remove('win'));
     infoDisplay.innerText = "O's turn"
     resetButton.innerText = 'Reset Game';
     enableBoxes();
